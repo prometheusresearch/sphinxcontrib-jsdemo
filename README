@@ -1,0 +1,92 @@
+*************************************************************************
+  ``sphinxcontrib-jsdemo`` -- HTML/Javascript Demo extension for Sphinx
+*************************************************************************
+
+Overview
+========
+
+``sphinxcontrib-jsdemo`` is an extension for embedding HTML/Javascript
+demo snippets into Sphinx_ documents.
+
+You can see this extension in action at
+http://htsql.org/htraf/index.html
+
+This software is written by Kirill Simonov (`Prometheus Research, LLC`_)
+and released under BSD license.
+
+
+Usage
+=====
+
+To enable this extension, add the following line to ``conf.py``::
+
+    extensions.append('sphinxcontrib.jsdemo')
+
+Now you can include a snippet of HTML/Javascript code to a Sphinx
+document using ``demo`` directive.  For example::
+
+    .. demo::
+
+       <button>Click me!</button>
+
+The directive renders it content twice: as a raw HTML block (demo) and
+as a literal block (source).
+
+Option ``layout`` allows you to control the relative order of the blocks.
+For example, the following directive renders the source block first,
+then the demo block, which content is initially hidden::
+
+    .. demo::
+       :layout: +source, -demo
+
+       <button>Click me, too!</button>
+
+
+Reference
+=========
+
+Directives
+----------
+
+``demo``
+    Inserts demo and source blocks.
+
+    The directive is rendered as a composite node with two blocks:
+
+    * A *demo* block containing raw HTML content.
+
+    * A *source* block with the same content in literal form.
+
+    Clicking on a block header toggles the block's visibility.
+
+    Options:
+
+    ``layout``
+        This option controls the order of the blocks and their
+        initial visibility.  It must contain comma-separated
+        list of blocks with optional ``+`` or ``-`` indicators
+        specifying the initial visibility.  Examples:
+
+        ``demo, source``
+            Render the *demo* block before the *source* block.
+
+        ``+source, -demo``
+            Render the *source* block before the *demo* block.
+            The *demo* block must be hidden initially.
+
+        ``-demo``
+            Render the *demo* block only, hidden initially.
+
+
+Configuration parameters
+------------------------
+
+CSS classes
+-----------
+
+
+.. _Sphinx: http://sphinx-doc.org/
+.. _Prometheus Research, LLC: http://prometheusresearch.com/
+
+
+.. vim: set spell spelllang=en textwidth=72:
