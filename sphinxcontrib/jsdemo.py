@@ -16,8 +16,8 @@ class DemoDirective(Directive):
             'layout': directives.unchanged,
     }
 
-    layout_re = re.compile(r'^[+-]?demo([,]\s*[+-]?source)?|'
-                          r'[+-]?source([,]\s*[+-]?demo)?$')
+    layout_re = re.compile(r'^(?:[+-]?demo([,]\s*[+-]?source)?|'
+                           r'[+-]?source([,]\s*[+-]?demo)?)$')
 
     def run(self):
         doc = self.state.document

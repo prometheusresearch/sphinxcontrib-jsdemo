@@ -29,12 +29,13 @@ document using ``demo`` directive.  For example::
 
        <button>Click me!</button>
 
-The directive renders it content twice: as a raw HTML block (demo) and
-as a literal block (source).
+The directive renders its content twice: as a raw HTML block (demo) and
+as a literal block (source).  Clicking on the *Demo* and *Source* headers
+toggles visibility of the blocks.
 
 Option ``layout`` allows you to control the relative order of the blocks.
-For example, the following directive renders the source block first,
-then the demo block, which content is initially hidden::
+For example, the following directive renders the source block before the
+demo block with the content of the demo block initially hidden::
 
     .. demo::
        :layout: +source, -demo
@@ -49,7 +50,7 @@ Directives
 ----------
 
 ``demo``
-    Inserts demo and source blocks.
+    Inserts a demo widget.
 
     The directive is rendered as a composite node with two blocks:
 
@@ -62,27 +63,47 @@ Directives
     Options:
 
     ``layout``
-        This option controls the order of the blocks and their
-        initial visibility.  It must contain comma-separated
-        list of blocks with optional ``+`` or ``-`` indicators
-        specifying the initial visibility.  Examples:
+        This option controls the order of the blocks and their initial
+        visibility.  It must contain comma-separated list of blocks with
+        optional ``+`` or ``-`` indicators specifying the initial
+        visibility.  Examples:
 
         ``demo, source``
             Render the *demo* block before the *source* block.
+            This is the default value of the option.
 
         ``+source, -demo``
             Render the *source* block before the *demo* block.
-            The *demo* block must be hidden initially.
+            The content of the *demo* block is hidden.
 
         ``-demo``
-            Render the *demo* block only, hidden initially.
-
+            Render the *demo* block only; hidden.
 
 Configuration parameters
 ------------------------
 
+``demo_layout``
+    The layout for ``demo`` directives with no ``layout`` option.
+    By default, ``+demo, +source``.
+
 CSS classes
 -----------
+
+``demo-wrapper``
+    Wraps the demo directive.
+
+``demo-header``
+    Wraps a block header.
+
+``demo-hide``
+    If set on a block header, indicates that the content of the block
+    is hidden.
+
+``demo-area``
+    Wraps the demo block.
+
+``demo-source``
+    Wraps the source block.
 
 
 .. _Sphinx: http://sphinx-doc.org/

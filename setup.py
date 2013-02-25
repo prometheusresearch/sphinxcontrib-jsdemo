@@ -8,7 +8,7 @@ from setuptools import setup
 
 NAME = "sphinxcontrib-jsdemo"
 VERSION = "0.1"
-DESCRIPTION = "A Sphinx HTML/Javascript Demo Extension"
+DESCRIPTION = "HTML/Javascript Demo extension for Sphinx"
 LONG_DESCRIPTION = open('README').read()
 AUTHOR = "Kirill Simonov (Prometheus Research, LLC)"
 AUTHOR_EMAIL = "xi@resolvent.net"
