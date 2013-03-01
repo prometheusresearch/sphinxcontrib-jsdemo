@@ -1,3 +1,3 @@
 
-include README NEWS LICENSE demo/Makefile demo/conf.py demo/*.rst sphinxcontrib/*.js sphinxcontrib/*.css
+include README LICENSE demo/Makefile demo/conf.py demo/*.rst sphinxcontrib/*.js sphinxcontrib/*.css
 

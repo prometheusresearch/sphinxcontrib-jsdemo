@@ -9,7 +9,8 @@ Overview
 demo snippets into Sphinx_ documents.
 
 You can see this extension in action at
-http://htsql.org/htraf/index.html
+http://htsql.org/htraf/index.html.  For more examples, see ``demo``
+directory in the source distribution.
 
 This software is written by Kirill Simonov (`Prometheus Research, LLC`_)
 and released under BSD license.
