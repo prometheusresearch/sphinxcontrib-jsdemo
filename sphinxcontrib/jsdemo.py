@@ -5,6 +5,7 @@
 
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
+from sphinx import addnodes
 from sphinx.util.osutil import copyfile
 import re, os.path
 
@@ -46,8 +47,10 @@ class DemoDirective(Directive):
                 demo = nodes.raw(data, data,
                                  format='html',
                                  classes=['demo-area'])
-                wrapper += header
-                wrapper += demo
+                html_wrapper = addnodes.only(expr='html')
+                html_wrapper += header
+                html_wrapper += demo
+                wrapper += html_wrapper
             elif block == 'source':
                 header = nodes.paragraph(classes=['demo-header'])
                 header += nodes.Text("Source")
@@ -56,7 +59,9 @@ class DemoDirective(Directive):
                 source = nodes.literal_block(data, data,
                                              language='html',
                                              classes=['demo-source'])
-                wrapper += header
+                html_wrapper = addnodes.only(expr='html')
+                html_wrapper += header
+                wrapper += html_wrapper
                 wrapper += source
             else:
                 assert False, block
@@ -64,7 +69,7 @@ class DemoDirective(Directive):
 
 
 def copy_static(app, exception):
-    if app.builder.name != 'html' or exception:
+    if app.builder.format != 'html' or exception:
         return
     for filename in ['jsdemo.js', 'jsdemo.css']:
         src = os.path.join(os.path.abspath(os.path.dirname(__file__)), filename)
